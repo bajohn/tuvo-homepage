@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SamplesComponent } from './pages/samples/samples.component';
 import { PiViewerComponent } from './pages/pi-viewer/pi-viewer.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { CarouselComponent } from './subcomponents/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     HomeComponent,
     SamplesComponent,
     PiViewerComponent,
-    ContactComponent
+    ContactComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
