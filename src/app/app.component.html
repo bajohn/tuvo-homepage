@@ -1,32 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">(Tuvo logo)</a>
-  <button class="navbar-toggler" type="button" (click)="navbarToggle()">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="main-bg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">(Tuvo logo)</a>
+    <button class="navbar-toggler" type="button" (click)="navbarToggle()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div [ngClass]="navBarClass">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Samples</a>
-      </li>
-      <!-- <li class="nav-item dropdown">
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">PI Viewer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<router-outlet></router-outlet>
+    <div [ngClass]="navBarClass">
+      <ul class="navbar-nav mr-auto">
+        <li *ngFor="let el of navItems" [ngClass]="el.itemClass">
+          <a class="nav-link" [routerLink]="el.link"> {{el.name}} </a>
+        </li>
+
+        <!-- <li [ngClass]="navItemClass">
+              <a class="nav-link" routerLink="">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="samples">Samples</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="pi-viewer">PI Viewer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="contact">Contact</a>
+            </li> -->
+
+        <!-- <li class="nav-item dropdown">
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li> -->
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

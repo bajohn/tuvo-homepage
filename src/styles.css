@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.imgfill {
+    width:100%;
+    height: auto;
+}
+
+.jumbotron-spacer {
+    height: 10px;
+}
+
+.main-bg {
+    background-color:#f2f5ff;
+}
