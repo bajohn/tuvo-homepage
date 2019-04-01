@@ -1,8 +1,17 @@
-<div class="card">
-  <div class="card-body">
-    <!-- <h1 class="display-4 ml-3">
-    Software
-  </h1> -->
-    <img class="imgfill" src="/assets/img/coolingtowers.jpg">
+<div class="xs-min">
+  <div class="card">
+    <div class="card-body">
+      <!-- <h1 class="display-4 ml-3">
+          Software
+        </h1> -->
+      <div class="hide-overflow">
+          <div class="carousel-container" [ngStyle]="containerStyle">
+              <div *ngFor="let el of imgList" class="carousel-mover" [ngStyle]="getStyle()">
+                <img [src]="el.imgSrc" class="imgfill">
+              </div>
+            </div>
+      </div>
+
+    </div>
   </div>
 </div>
