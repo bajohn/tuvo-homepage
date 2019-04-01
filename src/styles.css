@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .imgfill {
-    width:100%;
+    width: 100%;
     height: auto;
 }
 
@@ -8,6 +8,25 @@
     height: 10px;
 }
 
-.main-bg {
-    background-color:#f2f5ff;
+.xs-min {
+    min-width: 576px;
+    overflow:hidden;
 }
+
+.carousel-mover {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    -webkit-transition: left .75s; /* Safari */
+    transition: left .75s;    
+}
+
+.hide-overflow{
+    overflow:hidden;
+}
+
+
+
+/* .main-bg {
+    background-color:#f2f5ff;
+} */
