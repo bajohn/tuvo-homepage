@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 .imgfill {
+    flex: 1;
     width: 100%;
     height: auto;
+
 }
 
 .jumbotron-spacer {
@@ -9,7 +11,6 @@
 }
 
 .xs-min {
-    min-width: 576px;
     overflow:hidden;
 }
 
@@ -17,8 +18,8 @@
     position: relative;
     left: 0px;
     top: 0px;
-    -webkit-transition: left .75s; /* Safari */
-    transition: left .75s;    
+    -webkit-transition: left 1.5s; /* Safari */
+    transition: left 1.5s;    
 }
 
 .hide-overflow{

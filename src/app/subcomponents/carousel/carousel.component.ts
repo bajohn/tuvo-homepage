@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  //aspect ratio of all these images must match.
+  // aspect ratio of all these images must match.
   // We used 1.77 width/height based on coolingtowers.jpg
-  imgList = [
+  // todo: height bug in IE.
+  readonly imgList = [
     {
       imgSrc: '/assets/img/coolingtowers.jpg',
     },
@@ -22,17 +23,20 @@ export class CarouselComponent implements OnInit {
       imgSrc: '/assets/img/windturbines_adj.jpg',
     }
   ];
+  readonly intervalMs = 5000;
+  readonly whRatio = 1.77;
   idxShown = 0;
-  offset = 0
+  offset = 0;
   movingForward = true;
-  containerStyle = {
+  readonly containerStyle = {
     display: 'flex',
-    width: (this.imgList.length * 100) + '%'
+    width: (this.imgList.length * 100) + '%',
+    'max-height': (100 / this.whRatio) + 'vw' // fixes IE becoming way too tall.
   }
   constructor() { }
 
   ngOnInit() {
-    setInterval(this.incrementImgs.bind(this), 1000);
+    setInterval(this.incrementImgs.bind(this), this.intervalMs);
   }
 
   getStyle() {
@@ -40,7 +44,6 @@ export class CarouselComponent implements OnInit {
       left: this.offset + '%',
       width: (100 / this.imgList.length) + '%'
     }
-    //console.log(ret);
     return ret;
 
   }
