@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class CarouselComponent implements OnInit {
   // aspect ratio of all these images must match.
   // We used 1.77 width/height based on coolingtowers.jpg
-  // todo: height bug in IE.
   readonly imgList = [
     {
       imgSrc: '/assets/img/coolingtowers.jpg',
