@@ -18,14 +18,21 @@
     position: relative;
     left: 0px;
     top: 0px;
-    -webkit-transition: left 1.5s; /* Safari */
-    transition: left 1.5s;    
+    -webkit-transition: left 2s; /* Safari */
+    transition: left 2s;    
 }
 
 .hide-overflow{
     overflow:hidden;
 }
 
+.icon-sized {
+    font-size:10rem;
+}
+
+.center-text {
+    text-align: center;
+}
 
 
 /* .main-bg {
