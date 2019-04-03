@@ -10,6 +10,7 @@ import { SamplesComponent } from './pages/samples/samples.component';
 import { PiViewerComponent } from './pages/pi-viewer/pi-viewer.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CarouselComponent } from './subcomponents/carousel/carousel.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CarouselComponent } from './subcomponents/carousel/carousel.component';
     SamplesComponent,
     PiViewerComponent,
     ContactComponent,
-    CarouselComponent
+    CarouselComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -15,9 +15,14 @@ export class AppComponent {
       link: '',
       itemClass: ['nav-item']
     },
+    // {
+    //   name: 'Samples',
+    //   link: 'samples',
+    //   itemClass: ['nav-item']
+    // },
     {
-      name: 'Samples',
-      link: 'samples',
+      name: 'About',
+      link: 'about',
       itemClass: ['nav-item']
     },
     {
