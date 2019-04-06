@@ -60,11 +60,50 @@
         </li>
 
       </ul>
+      <hr>
     </div>
     <div class="col-12">
-      Please <a routerLink="contact"> contact us</a> for more information or references.
+      <h5>
+        Technologies Used
+      </h5>
+    </div>
+    <div class="col-12">
+      We handle application development from the database level all the way up to the user interface. We favor open
+      source software whenever possible. Some technologies we use regularly (including to build this webpage) are:
     </div>
 
+
+    <ng-container *ngFor="let el of techArr; let i = index;">
+      <div *ngIf="i%4==0" class="col-12 tech-spacer">
+
+      </div>
+
+      <div class="col-2">
+        <div class="text-center">
+          <h5>
+            {{el.name}}
+          </h5>
+        </div>
+        <div>
+          <img [src]="el.imgSrc" class="imgfill">
+        </div>
+      </div>
+      <div class="col-1">
+      </div>
+      <div *ngIf="i%4==3" class="col-12">
+        <hr>
+      </div>
+    </ng-container>
+
+
+    <div class="col-12">
+
+      Please <a routerLink="../contact"> contact us</a> for more information or references.
+
+    </div>
+    <div class="col-12 tech-spacer">
+
+    </div>
 
 
   </div>

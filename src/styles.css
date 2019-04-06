@@ -9,6 +9,9 @@
 .jumbotron-spacer {
     height: 10px;
 }
+.tech-spacer {
+    height: 20px;
+}
 
 .xs-min {
     overflow:hidden;
