@@ -109,3 +109,9 @@ resource "aws_s3_bucket" "tuvo_bucket" {
     bucket = "tuvo"
     acl    = "private"
 }
+
+resource "aws_acm_certificate" "tuvo_cert" {
+    domain_name       = "tuvo.io"
+  validation_method = "DNS"
+
+}
