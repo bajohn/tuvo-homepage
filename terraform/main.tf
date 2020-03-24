@@ -99,3 +99,7 @@ resource "aws_route53_record" "tuvo_soa" {
 
 }
 
+resource "aws_route53_zone" "tuvo_zone" {
+    name       = "tuvo.io"
+    comment    = ""
+}
