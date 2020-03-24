@@ -58,7 +58,7 @@ resource "aws_cloudfront_distribution" "tuvo_distribution" {
 }
 
 
-resource "aws_route53_record" "tuvo_a" {
+resource "aws_route53_record" "tuvo_record_a" {
     zone_id = "Z1M99FTY5XPK1J"
     name    = "tuvo.io"
     type    = "A"
@@ -70,7 +70,7 @@ resource "aws_route53_record" "tuvo_a" {
     }
 }
 
-resource "aws_route53_record" "tuvo_aaaa" {
+resource "aws_route53_record" "tuvo_record_aaaa" {
     zone_id = "Z1M99FTY5XPK1J"
     name    = "tuvo.io"
     type    = "AAAA"
@@ -82,7 +82,7 @@ resource "aws_route53_record" "tuvo_aaaa" {
     }
 }
 
-resource "aws_route53_record" "tuvo_ns" {
+resource "aws_route53_record" "tuvo_record_ns" {
     zone_id = "Z1M99FTY5XPK1J"
     name    = "tuvo.io"
     type    = "NS"
@@ -90,7 +90,7 @@ resource "aws_route53_record" "tuvo_ns" {
     ttl     = "300"
 
 }
-resource "aws_route53_record" "tuvo_soa" {
+resource "aws_route53_record" "tuvo_record_soa" {
     zone_id = "Z1M99FTY5XPK1J"
     name    = "tuvo.io"
     type    = "SOA"
@@ -102,4 +102,10 @@ resource "aws_route53_record" "tuvo_soa" {
 resource "aws_route53_zone" "tuvo_zone" {
     name       = "tuvo.io"
     comment    = ""
+}
+
+
+resource "aws_s3_bucket" "tuvo_bucket" {
+    bucket = "tuvo"
+    acl    = "private"
 }
