@@ -7,4 +7,4 @@ Built using Angular. Deployed using AWS + Terraform, though Terraform configurat
 
 ## Notes
 
-TODO: terraform plan has a big diff, check into these differences!
+Parameterize terraform config! Would be cool to make a more generalized version of this project.
