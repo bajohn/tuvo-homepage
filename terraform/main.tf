@@ -59,59 +59,63 @@ resource "aws_cloudfront_distribution" "tuvo_distribution" {
 
 
 resource "aws_route53_record" "tuvo_record_a" {
-    zone_id = "Z1M99FTY5XPK1J"
-    name    = "tuvo.io"
-    type    = "A"
+  zone_id = "Z1M99FTY5XPK1J"
+  name    = "tuvo.io"
+  type    = "A"
 
-    alias {
-        name    = "d2w67oumh7fi0w.cloudfront.net"
-        zone_id = "Z2FDTNDATAQYW2"
-        evaluate_target_health = false
-    }
+  alias {
+    name                   = "d2w67oumh7fi0w.cloudfront.net"
+    zone_id                = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "tuvo_record_aaaa" {
-    zone_id = "Z1M99FTY5XPK1J"
-    name    = "tuvo.io"
-    type    = "AAAA"
+  zone_id = "Z1M99FTY5XPK1J"
+  name    = "tuvo.io"
+  type    = "AAAA"
 
-    alias {
-        name    = "d2w67oumh7fi0w.cloudfront.net"
-        zone_id = "Z2FDTNDATAQYW2"
-        evaluate_target_health = false
-    }
+  alias {
+    name                   = "d2w67oumh7fi0w.cloudfront.net"
+    zone_id                = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "tuvo_record_ns" {
-    zone_id = "Z1M99FTY5XPK1J"
-    name    = "tuvo.io"
-    type    = "NS"
-    records = ["ns-2046.awsdns-63.co.uk.", "ns-600.awsdns-11.net.", "ns-271.awsdns-33.com.", "ns-1220.awsdns-24.org."]
-    ttl     = "300"
+  zone_id = "Z1M99FTY5XPK1J"
+  name    = "tuvo.io"
+  type    = "NS"
+  records = ["ns-2046.awsdns-63.co.uk.", "ns-600.awsdns-11.net.", "ns-271.awsdns-33.com.", "ns-1220.awsdns-24.org."]
+  ttl     = "300"
 
 }
 resource "aws_route53_record" "tuvo_record_soa" {
-    zone_id = "Z1M99FTY5XPK1J"
-    name    = "tuvo.io"
-    type    = "SOA"
-    records = ["ns-2046.awsdns-63.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"]
-    ttl     = "900"
+  zone_id = "Z1M99FTY5XPK1J"
+  name    = "tuvo.io"
+  type    = "SOA"
+  records = ["ns-2046.awsdns-63.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"]
+  ttl     = "900"
 
 }
 
 resource "aws_route53_zone" "tuvo_zone" {
-    name       = "tuvo.io"
-    comment    = ""
+  name    = "tuvo.io"
+  comment = ""
 }
 
 
 resource "aws_s3_bucket" "tuvo_bucket" {
-    bucket = "tuvo"
-    acl    = "private"
+  bucket = "tuvo"
+  acl    = "private"
+  website {
+    error_document = "index.html"
+    index_document = "index.html"
+  }
 }
 
 resource "aws_acm_certificate" "tuvo_cert" {
-    domain_name       = "tuvo.io"
+  domain_name       = "tuvo.io"
   validation_method = "DNS"
 
 }
