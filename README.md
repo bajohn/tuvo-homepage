@@ -7,4 +7,6 @@ Built using Angular. Deployed using AWS + Terraform, though Terraform configurat
 
 ## Notes
 
-Parameterize terraform config! Would be cool to make a more generalized version of this project.
+TODO
+- Write readme for using this terraform to create a new website. Try it with a new domain when ready.
+- Standardize deploy script for Angular build -> s3 location from terraform 
