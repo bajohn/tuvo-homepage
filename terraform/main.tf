@@ -1,20 +1,20 @@
 provider "aws" {
-  region  = "us-east-1"
+  region  = var.region
   profile = "default"
 }
 
 
-resource "aws_cloudfront_distribution" "tuvo_distribution" {
+resource "aws_cloudfront_distribution" "website_distribution" {
   origin {
-    domain_name = "tuvo.s3.amazonaws.com"
-    origin_id   = "S3-tuvo/tuvo.s3.amazonaws.com/index/dist/index.html"
+    domain_name = "${var.bucket-name}.s3.amazonaws.com"
+    origin_id   =  "${var.domain-name}-s3-origin" 
   }
-  aliases = ["tuvo.io"]
+  aliases = [ var.domain-name]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "S3-tuvo/tuvo.s3.amazonaws.com/index/dist/index.html"
+    target_origin_id = "${var.domain-name}-s3-origin"  
 
     forwarded_values {
       query_string = false
@@ -32,7 +32,7 @@ resource "aws_cloudfront_distribution" "tuvo_distribution" {
   enabled         = true
   is_ipv6_enabled = true
   viewer_certificate {
-    acm_certificate_arn      = "arn:aws:acm:us-east-1:748004005034:certificate/6f3a889d-9af4-40fd-bdb4-dc65030d4951"
+    acm_certificate_arn      = aws_acm_certificate.website_cert.arn
     minimum_protocol_version = "TLSv1.1_2016"
     ssl_support_method       = "sni-only"
   }
@@ -58,55 +58,62 @@ resource "aws_cloudfront_distribution" "tuvo_distribution" {
 }
 
 
-resource "aws_route53_record" "tuvo_record_a" {
-  zone_id = "Z1M99FTY5XPK1J"
-  name    = "tuvo.io"
+resource "aws_route53_record" "website_record_a" {
+  zone_id = aws_route53_zone.website_zone.zone_id
+  name    =  var.domain-name
   type    = "A"
 
   alias {
-    name                   = "d2w67oumh7fi0w.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = aws_cloudfront_distribution.website_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.website_distribution.hosted_zone_id 
     evaluate_target_health = false
   }
 }
 
-resource "aws_route53_record" "tuvo_record_aaaa" {
-  zone_id = "Z1M99FTY5XPK1J"
-  name    = "tuvo.io"
+resource "aws_route53_record" "website_record_aaaa" {
+  zone_id = aws_route53_zone.website_zone.zone_id
+  name    = var.domain-name
   type    = "AAAA"
 
   alias {
-    name                   = "d2w67oumh7fi0w.cloudfront.net"
-    zone_id                = "Z2FDTNDATAQYW2"
+    name                   = aws_cloudfront_distribution.website_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.website_distribution.hosted_zone_id 
     evaluate_target_health = false
   }
 }
 
-resource "aws_route53_record" "tuvo_record_ns" {
-  zone_id = "Z1M99FTY5XPK1J"
-  name    = "tuvo.io"
+resource "aws_route53_record" "website_record_ns" {
+  allow_overwrite = true
+  zone_id = aws_route53_zone.website_zone.zone_id
+  name    =  var.domain-name
   type    = "NS"
-  records = ["ns-2046.awsdns-63.co.uk.", "ns-600.awsdns-11.net.", "ns-271.awsdns-33.com.", "ns-1220.awsdns-24.org."]
+    records = [
+    "${aws_route53_zone.website_zone.name_servers.0}",
+    "${aws_route53_zone.website_zone.name_servers.1}",
+    "${aws_route53_zone.website_zone.name_servers.2}",
+    "${aws_route53_zone.website_zone.name_servers.3}",
+  ]
   ttl     = "300"
 
 }
-resource "aws_route53_record" "tuvo_record_soa" {
-  zone_id = "Z1M99FTY5XPK1J"
-  name    = "tuvo.io"
+resource "aws_route53_record" "website_record_soa" {
+  allow_overwrite = true
+  zone_id = aws_route53_zone.website_zone.zone_id
+  name    = var.domain-name
   type    = "SOA"
-  records = ["ns-2046.awsdns-63.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"]
+  records=["${aws_route53_zone.website_zone.name_servers.0} awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"]
   ttl     = "900"
 
 }
 
-resource "aws_route53_zone" "tuvo_zone" {
-  name    = "tuvo.io"
+resource "aws_route53_zone" "website_zone" {
+  name    =  var.domain-name
   comment = ""
 }
 
 
-resource "aws_s3_bucket" "tuvo_bucket" {
-  bucket = "tuvo"
+resource "aws_s3_bucket" "website_bucket" {
+  bucket = var.bucket-name
   acl    = "private"
   website {
     error_document = "index.html"
@@ -114,8 +121,8 @@ resource "aws_s3_bucket" "tuvo_bucket" {
   }
 }
 
-resource "aws_acm_certificate" "tuvo_cert" {
-  domain_name       = "tuvo.io"
+resource "aws_acm_certificate" "website_cert" {
+  domain_name       =  var.domain-name
   validation_method = "DNS"
 
 }
