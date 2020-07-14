@@ -5,6 +5,15 @@ Homepage for Tuvo LLC, hosted at [tuvo.io](https://tuvo.io)
 
 Built using Angular. Deployed using AWS + Terraform, though Terraform configuration is under construction.
 
+## Deployment
+- Install Angular and related modules using `npm install` from the root directory.
+- Build for production using `ng build --configuration=prod`.
+- The artifact files land in an adjacent directory `../tuvo-homepage-deploy`.
+- Copy these files into the S3 bucket indicated by the Terraform module `resource "aws_s3_bucket" "website_bucket" `.
+- In AWS, make these files publically accessible. The website is now updated!
+
+
+
 ## Notes
 
 TODO
