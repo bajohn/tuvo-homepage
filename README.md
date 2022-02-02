@@ -7,7 +7,7 @@ Built using Angular. Deployed using AWS + Terraform, though Terraform configurat
 
 ## Deployment
 - Install Angular and related modules using `npm install` from the root directory.
-- Build for production using `ng build --configuration=prod`.
+- Build for production using `ng build --configuration=production`.
 - The artifact files land in an adjacent directory `../tuvo-homepage-deploy`.
 - Copy these files into the S3 bucket indicated by the Terraform module `resource "aws_s3_bucket" "website_bucket" `.
 - In AWS, make these files publically accessible. The website is now updated!
