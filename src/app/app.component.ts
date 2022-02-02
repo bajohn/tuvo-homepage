@@ -20,21 +20,21 @@ export class AppComponent {
     //   link: 'samples',
     //   itemClass: ['nav-item']
     // },
-    {
-      name: 'About',
-      link: 'about',
-      itemClass: ['nav-item']
-    },
-    {
-      name: 'PI Viewer',
-      link: 'pi-viewer',
-      itemClass: ['nav-item']
-    },
-    {
-      name: 'Contact',
-      link: 'contact',
-      itemClass: ['nav-item']
-    }
+    // {
+    //   name: 'About',
+    //   link: 'about',
+    //   itemClass: ['nav-item']
+    // },
+    // {
+    //   name: 'PI Viewer',
+    //   link: 'pi-viewer',
+    //   itemClass: ['nav-item']
+    // },
+    // {
+    //   name: 'Contact',
+    //   link: 'contact',
+    //   itemClass: ['nav-item']
+    // }
   ]
   constructor(private router: Router) {
     this.router.events.subscribe(el => {

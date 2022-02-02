@@ -5,7 +5,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './pages/home-v2/home.component';
 import { SamplesComponent } from './pages/samples/samples.component';
 import { PiViewerComponent } from './pages/pi-viewer/pi-viewer.component';
 import { ContactComponent } from './pages/contact/contact.component';

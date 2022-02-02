@@ -12,7 +12,13 @@ Built using Angular. Deployed using AWS + Terraform, though Terraform configurat
 - Copy these files into the S3 bucket indicated by the Terraform module `resource "aws_s3_bucket" "website_bucket" `.
 - In AWS, make these files publically accessible. The website is now updated!
 
-
+## Run local
+Run locally using:
+```
+npm install 
+ng serve
+```
+The page is now served on `localhost:4200`
 
 ## Notes
 
